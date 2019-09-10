@@ -24,53 +24,77 @@
     </div>
   </div>
   <div class="contents" *ngIf="contentsSummary">
-    <div
-      class="row"
-      *ngFor="
-        let content of sliceContents(
-          contentsSummary,
-          0,
-          3,
-          isViewAllContentsSet
-        )
-      "
-    >
-      <div class="col-md-2 left" style="float: left; width: 100%;">
-        <h4>
-          <a class="content-name" href="{{ content.url }}">{{
-            content.name
-          }}</a>
-          <h6 class="text-muted">
-            <i>{{ content.textSummary }}</i>
-          </h6>
-        </h4>
-      </div>
+    <div class="container">
       <div
-        class="col-md-10 right"
-        style="float: right; text-align: justify; width: 00%"
+        class="row"
+        *ngFor="
+          let content of sliceContents(
+            contentsSummary,
+            0,
+            3,
+            isViewAllContentsSet
+          )
+        "
       >
-        <p>
-          {{ content.description }}
-        </p>
+        <div class="col-md-3 left" style="float: left; width: 100%;">
+          <h4>
+            <a class="content-name" href="{{ content.url }}">{{
+              content.name
+            }}</a>
+            <h6 class="text-muted">
+              <i>{{ content.textSummary }}</i>
+            </h6>
+          </h4>
+        </div>
+        <div
+          class="col-md-9 right"
+          style="float: right; text-align: justify; width: 0%"
+        >
+          <p>
+            {{ content.description }}
+          </p>
+        </div>
+      </div>
+      <a
+        style="float: right"
+        *ngIf="!isViewAllContentsSet"
+        (click)="setViewAll()"
+        class="view-all-link"
+        >More</a
+      >
+      <a
+        style="float: right"
+        *ngIf="isViewAllContentsSet"
+        (click)="setViewAll()"
+        class="view-all-link"
+        >Show less</a
+      >
+    </div>
+  </div>
+  <div class="data-dimension">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <h4><i>Data dimensions</i></h4>
+          <h6 class="text-muted">
+            <i>Core data dimensions</i>
+          </h6>
+        </div>
+        <div class="col-md-10" style="border-left: solid 2px #222">
+          <p class="text-justify">
+            There are three core data dimensions which you will face either
+            during data capturing or during using report generation tools. These
+            core dimensions are Organisation unit <b> (Where - W)</b>,
+            <b>period (When -W)</b> and type of metadata like indicators,
+            defined reports e.t.c <b>(What - W)</b>. They are generally called
+            <b>3Ws</b>
+          </p>
+        </div>
       </div>
     </div>
-    <a
-      style="float: right"
-      *ngIf="!isViewAllContentsSet"
-      (click)="setViewAll()"
-      class="view-all-link"
-      >More</a
-    >
-    <a
-      style="float: right"
-      *ngIf="isViewAllContentsSet"
-      (click)="setViewAll()"
-      class="view-all-link"
-      >Show less</a
-    >
   </div>
   <div
-    style="bottom: 20px; position: absolute; width: 80%"
+    style="bottom: 0; right: 0; position: fixed; width: 80%"
     *ngIf="users$ | async"
   >
     <div

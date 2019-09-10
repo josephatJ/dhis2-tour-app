@@ -65,26 +65,6 @@ export class HomeComponent implements OnInit {
   isViewAllContentsSet: boolean = false;
   searchInput: string;
   isChatSet: boolean = false;
-  testUsers: Array<any> = [
-    {
-      id: "user_1",
-      name: "Josephat Julius",
-      username: "josephatj",
-      description: "Testing"
-    },
-    {
-      id: "user_2",
-      name: "Anna Mk",
-      username: "annamk",
-      description: "Testing"
-    },
-    {
-      id: "user_2",
-      name: "Farida Elisha",
-      username: "farida",
-      description: "Testing"
-    }
-  ];
   selectedUsername: string = "";
   currentUserUsername: string;
   currentUser$: Observable<User>;

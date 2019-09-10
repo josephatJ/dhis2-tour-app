@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
       id: "data-visualizer",
       name: "Data visualizer",
       url: "../../../dhis-web-data-visualizer/index.html",
-      textSummary: "generate reports in graphs",
+      textSummary: "generate reports in graphs/charts",
       description:
         "Data visualizer is also an analysis tool used to create reports into charts. It supports different types of charts where one can choose the best chart for the data to be analysed"
     },
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
       id: "dictionary",
       name: "Indicator dictionary",
       url: "../../../api/apps/SSB-Indicator-Dictionary/index.html#/",
-      textSummary: "View defintions",
+      textSummary: "View defintions of indicators",
       description:
         "The indicator dictionary (SSB Dictionary) helps one to view the definition of different metadata of in the system. With seeing the definition, one will be confortable to view the data"
     }

@@ -55,3 +55,24 @@ h6 {
 .data-dimension {
   margin-top: 60px;
 }
+
+.implemented-forms-reports {
+  margin-top: 70px;
+}
+
+.implemented-forms-reports h4,
+h6 {
+  color: #315836 !important;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: -20;
+  width: 100%;
+  margin-top: 20px;
+  background-color: transparent;
+  color: white;
+  height: 70px;
+  text-align: center;
+}

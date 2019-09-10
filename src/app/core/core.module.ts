@@ -1,15 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import {
   APP_INITIALIZER,
   ModuleWithProviders,
   NgModule,
   Optional,
   SkipSelf
-} from '@angular/core';
+} from "@angular/core";
 
-import { IndexDbService, IndexDbServiceConfig } from './services';
-
+import { IndexDbService, IndexDbServiceConfig } from "./services";
 export function initializeDb(indexDbServiceConfig: IndexDbServiceConfig) {
   return () => new IndexDbService(indexDbServiceConfig);
 }
@@ -28,7 +27,7 @@ export class CoreModule {
     parentModule: CoreModule
   ) {
     if (parentModule) {
-      throw new Error('CoreModule is already loaded. Import only in AppModule');
+      throw new Error("CoreModule is already loaded. Import only in AppModule");
     }
   }
 

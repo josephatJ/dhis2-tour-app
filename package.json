@@ -1,10 +1,10 @@
 {
-  "name": "ngx-seed-app",
+  "name": "tour-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot && cd dist/ngx-seed-app && zip -r -D ngx-seed-app.zip .",
+    "build": "ng build --prod --aot && cd dist/tour-app && zip -r -D tour-app.zip .",
     "test": "ng test",
     "test:travis": "ng test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
@@ -19,6 +19,7 @@
     "@angular/common": "^8.0.1",
     "@angular/compiler": "^8.0.1",
     "@angular/core": "^8.0.1",
+    "@angular/fire": "^5.2.1",
     "@angular/forms": "^8.0.1",
     "@angular/platform-browser": "^8.0.1",
     "@angular/platform-browser-dynamic": "^8.0.1",
@@ -38,6 +39,8 @@
     "core-js": "^3.1.4",
     "d2": "^31.8.1",
     "dexie": "^2.0.4",
+    "firebase": "^6.6.0",
+    "lodash": "^4.17.15",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

@@ -1,3 +1,124 @@
 <div style="margin-top: 70px">
-  <h1 style="font-size: 60px; text-align: center">Welcome to HISP TANZANIA SEED APP</h1>
+  <div class="row">
+    <div class="col-md-12 guide-header">
+      <div>
+        <h4 style="text-align: left">
+          <b style="color: rgb(70, 126, 74)">GUIDE </b> : Get to know the IMS -
+          ISO
+        </h4>
+        <div>
+          <p class="text-justify">
+            You can ask yourself, how could be
+            <b title="International Organisation of Standardization">ISO</b> be
+            in the electronic database ? What if it will be, will is it
+            helpful?. You might have many more questions. The world is changing
+            and every now and then people want to find the best solution of the
+            problems they are facing. <b>Technology</b> has been a solution. The
+            IMS (Integrated Management System) for
+            <b title="International Organisation of Standardization">ISO</b> for
+            the Bakhresa Indutries its a solution where data will be entered and
+            hence one can do analysis using the softcated tools.available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contents" *ngIf="contentsSummary">
+    <div
+      class="row"
+      *ngFor="
+        let content of sliceContents(
+          contentsSummary,
+          0,
+          3,
+          isViewAllContentsSet
+        )
+      "
+    >
+      <div class="col-md-2 left" style="float: left; width: 100%;">
+        <h4>
+          <a class="content-name" href="{{ content.url }}">{{
+            content.name
+          }}</a>
+          <h6 class="text-muted">
+            <i>{{ content.textSummary }}</i>
+          </h6>
+        </h4>
+      </div>
+      <div
+        class="col-md-10 right"
+        style="float: right; text-align: justify; width: 00%"
+      >
+        <p>
+          {{ content.description }}
+        </p>
+      </div>
+    </div>
+    <a
+      style="float: right"
+      *ngIf="!isViewAllContentsSet"
+      (click)="setViewAll()"
+      class="view-all-link"
+      >More</a
+    >
+    <a
+      style="float: right"
+      *ngIf="isViewAllContentsSet"
+      (click)="setViewAll()"
+      class="view-all-link"
+      >Show less</a
+    >
+  </div>
+  <div style="bottom: 20px; position: absolute; width: 80%">
+    <div
+      *ngIf="isChatSet"
+      style="width: 320px; float: right; margin-bottom: 50px"
+    >
+      <input
+        class="form-control"
+        placeholder="search user"
+        [(ngModel)]="searchInput"
+        style="border: none; border-bottom: solid 1px #222; border-radius: 0px; margin-bottom: 5px;"
+      />
+      <select [(ngModel)]="selectedUsername" style="margin-bottom: 5px;">
+        <option value="">select user</option>
+        <option
+          value="{{ user.username }}"
+          *ngFor="let user of testUsers | filterItems: searchInput"
+          >{{ user.name }} - {{ user.username }}</option
+        >
+      </select>
+      <div
+        *ngIf="
+          selectedUsername != '' &&
+          selectedUsername != (currentUser$ | async).userCredentials.username
+        "
+      >
+        <app-chatting
+          [usernamePartner]="selectedUsername"
+          [currentUserUsername]="
+            (currentUser$ | async).userCredentials.username
+          "
+        ></app-chatting>
+      </div>
+    </div>
+    <div style="bottom: 0px; position: absolute; width: 100%; margin-top: 20px">
+      <button
+        *ngIf="!isChatSet"
+        class="btn"
+        style="float: right"
+        (click)="showChat()"
+      >
+        Go to chat
+      </button>
+      <button
+        *ngIf="isChatSet"
+        class="btn"
+        style="float: right"
+        (click)="showChat()"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
 </div>

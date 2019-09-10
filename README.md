@@ -20,7 +20,7 @@ The app provides a tour about the modules and service available in DHIS2 instanc
 Clone repository
 
 ```bash
- git clone https://github.com/hisptz/dhis-tour-app.git
+ git clone https://github.com/josephatJ/dhis-tour-app.git
 ```
 
 Navigate to application root folder

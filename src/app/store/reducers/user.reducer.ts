@@ -1,16 +1,19 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on } from "@ngrx/store";
 
 import {
   addCurrentUser,
   loadCurrentUser,
-  loadCurrentUserFail
-} from '../actions/user.actions';
-import { initialUserState, UserState } from '../states/user.state';
+  loadCurrentUserFail,
+  loadSystemUsers,
+  addSystemUsers,
+  loadingSystemUsersFail
+} from "../actions/user.actions";
+import { initialUserState, UserState } from "../states/user.state";
 import {
   loadingBaseState,
   loadedBaseState,
   errorBaseState
-} from '../states/base.state';
+} from "../states/base.state";
 
 export const reducer = createReducer(
   initialUserState,
@@ -24,6 +27,22 @@ export const reducer = createReducer(
     currentUser
   })),
   on(loadCurrentUserFail, (state, { error }) => ({
+    ...state,
+    ...errorBaseState,
+    error
+  })),
+  on(loadSystemUsers, state => ({
+    ...state,
+    loaded: state.loaded,
+    loading: state.loading
+  })),
+  on(addSystemUsers, (state, { users }) => ({
+    ...state,
+    users: users,
+    loaded: state.loaded,
+    loading: state.loading
+  })),
+  on(loadingSystemUsersFail, (state, { error }) => ({
     ...state,
     ...errorBaseState,
     error

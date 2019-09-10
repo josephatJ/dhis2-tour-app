@@ -1,8 +1,8 @@
-import { createSelector } from '@ngrx/store';
+import { createSelector } from "@ngrx/store";
 
-import { User } from '../../core';
-import { getRootState, State } from '../reducers';
-import { UserState } from '../states/user.state';
+import { User } from "../../core";
+import { getRootState, State } from "../reducers";
+import { UserState } from "../states/user.state";
 
 export const getUserState = createSelector(
   getRootState,
@@ -12,6 +12,11 @@ export const getUserState = createSelector(
 export const getCurrentUser = createSelector(
   getUserState,
   (state: UserState) => state.currentUser
+);
+
+export const getSystemUsers = createSelector(
+  getUserState,
+  (state: UserState) => state.users
 );
 
 export const getCurrentUserLoading = createSelector(
@@ -37,7 +42,7 @@ export const getCurrentUserManagementAuthoritiesStatus = createSelector(
     }
 
     return currentUser && currentUser.authorities
-      ? currentUser.authorities.includes('ALL')
+      ? currentUser.authorities.includes("ALL")
       : false;
   }
 );

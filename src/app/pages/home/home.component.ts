@@ -4,7 +4,7 @@ import { Store } from "@ngrx/store";
 import { State } from "src/app/store/reducers";
 import { Observable } from "rxjs";
 import { User } from "src/app/core";
-import { getCurrentUser } from "src/app/store/selectors";
+import { getCurrentUser, getSystemUsers } from "src/app/store/selectors";
 
 @Component({
   selector: "app-home",
@@ -88,9 +88,11 @@ export class HomeComponent implements OnInit {
   selectedUsername: string = "";
   currentUserUsername: string;
   currentUser$: Observable<User>;
+  users$: Observable<any>;
   constructor(private store: Store<State>) {
     this.searchInput = "";
     this.currentUser$ = this.store.select(getCurrentUser);
+    this.users$ = this.store.select(getSystemUsers);
     this.currentUserUsername = "josephatj";
   }
 

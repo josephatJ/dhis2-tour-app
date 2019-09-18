@@ -5,6 +5,7 @@ import { State } from "src/app/store/reducers";
 import { Observable } from "rxjs";
 import { User } from "src/app/core";
 import { getCurrentUser, getSystemUsers } from "src/app/store/selectors";
+import { getTourConfigsState } from "src/app/store/selectors/tour-configs.selectors";
 
 @Component({
   selector: "app-home",
@@ -69,11 +70,19 @@ export class HomeComponent implements OnInit {
   currentUserUsername: string;
   currentUser$: Observable<User>;
   users$: Observable<any>;
+  configsData$: Observable<any>;
+  configsData: any;
   constructor(private store: Store<State>) {
     this.searchInput = "";
     this.currentUser$ = this.store.select(getCurrentUser);
     this.users$ = this.store.select(getSystemUsers);
-    this.currentUserUsername = "josephatj";
+    this.configsData$ = this.store.select(getTourConfigsState);
+    this.configsData$.subscribe(data => {
+      if (data && data.contentsSummary) {
+        console.log(data);
+        this.configsData = data;
+      }
+    });
   }
 
   ngOnInit() {}

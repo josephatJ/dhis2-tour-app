@@ -12,7 +12,8 @@ import {
   loadCurrentUserFail,
   loadSystemUsers,
   addSystemUsers,
-  loadingSystemUsersFail
+  loadingSystemUsersFail,
+  loadTourConfigs
 } from "../actions";
 import { State } from "../reducers";
 
@@ -45,7 +46,10 @@ export class UserEffects {
       ofType(loadSystemUsers),
       switchMap(() =>
         this.userService.loadSystemUsers().pipe(
-          map(data => addSystemUsers({ users: data })),
+          map(
+            data => addSystemUsers({ users: data }),
+            this.store.dispatch(loadTourConfigs())
+          ),
           catchError((error: ErrorMessage) =>
             of(loadingSystemUsersFail({ error: error }))
           )

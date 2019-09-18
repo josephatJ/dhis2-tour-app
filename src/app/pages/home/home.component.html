@@ -1,35 +1,21 @@
 <div style="margin-top: 70px">
   <div class="row">
     <div class="col-md-12 guide-header">
-      <div>
-        <h4 style="text-align: left">
-          <b style="color: rgb(70, 126, 74)">GUIDE </b> : Get to know the IMS -
-          ISO
-        </h4>
-        <div>
-          <p class="text-justify">
-            You can ask yourself, how could be
-            <b title="International Organisation of Standardization">ISO</b> be
-            in the electronic database ? What if it will be, will is it
-            helpful?. You might have many more questions. The world is changing
-            and every now and then people want to find the best solution of the
-            problems they are facing. <b>Technology</b> has been a solution. The
-            IMS (Integrated Management System) for
-            <b title="International Organisation of Standardization">ISO</b> for
-            the Bakhresa Indutries its a solution where data will be entered and
-            hence one can do analysis using the softcated tools.available.
-          </p>
-        </div>
+      <div *ngIf="configsData$ | async">
+        <div
+          *ngIf="(configsData$ | async).configs"
+          [innerHTML]="(configsData$ | async).configs.introductionHtmlCodes"
+        ></div>
       </div>
     </div>
   </div>
-  <div class="contents" *ngIf="contentsSummary">
-    <div class="container">
+  <div class="contents" *ngIf="configsData$ | async">
+    <div class="container" *ngIf="(configsData$ | async).configs">
       <div
         class="row"
         *ngFor="
           let content of sliceContents(
-            contentsSummary,
+            (configsData$ | async).configs.contentsSummary,
             0,
             3,
             isViewAllContentsSet
@@ -71,7 +57,7 @@
       >
     </div>
   </div>
-  <div class="data-dimension">
+  <div class="data-dimension" *ngIf="(configsData$ | async).configs">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -117,7 +103,7 @@
       </div>
     </div>
   </div>
-  <div class="implemented-forms-reports">
+  <div class="implemented-forms-reports" *ngIf="(configsData$ | async).configs">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
